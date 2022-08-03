@@ -1,20 +1,15 @@
-const defaultSize = 16
-
-let currentSize = defaultSize
-
 const grid = document.querySelector(".grid")
-const grid16 = document.querySelector(".grid16")
-const grid32 = document.querySelector(".grid32")
 const clrGrid = document.querySelector(".clearGrid")
+const gridRange = document.querySelector(".gridRange")
 
-grid16.onclick = function() {
-  if (currentSize !== 16) {currentSize = 16
-  clearGrid()}
-}
-grid32.onclick = function() {
-  if (currentSize !== 32) {currentSize = 32
-  clearGrid()}
-}
+let currentSize = gridRange.value
+
+gridRange.addEventListener('input', function(){
+  currentSize = gridRange.value
+  clearGrid()
+  setupGrid(currentSize)
+})
+
 clrGrid.onclick = function() {clearGrid()}
 
 function setupGrid(size) {
