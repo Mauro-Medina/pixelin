@@ -1,13 +1,19 @@
 const grid = document.querySelector(".grid")
 const clrGrid = document.querySelector(".clearGrid")
 const gridRange = document.querySelector(".gridRange")
+const color = document.querySelector(".colorInput")
 
+let currentColor = color.value
 let currentSize = gridRange.value
 
 gridRange.addEventListener('input', function(){
   currentSize = gridRange.value
   clearGrid()
   setupGrid(currentSize)
+})
+
+color.addEventListener('input', () => {
+  currentColor = color.value
 })
 
 clrGrid.onclick = function() {clearGrid()}
@@ -25,7 +31,7 @@ function setupGrid(size) {
   }
 }
 function changeColor(e) {
-  e.target.style.backgroundColor = "#000000"
+  e.target.style.backgroundColor = color.value
 }
 function clearGrid() {
   grid.innerHTML = ""
